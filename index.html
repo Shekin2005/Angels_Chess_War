@@ -1,0 +1,114 @@
+<!--
+  Angel's Chess War
+  Student: Shekin David Raj
+  File: index.html
+  Purpose: Website entry point, WebGL canvas, game controls, and JavaScript dependencies.
+  Notes: Existing application logic and external asset attributions are preserved.
+-->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <title>
+   Angel's Chess War — Integrated 3D Angels
+  </title>
+  <link href="style.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <!-- Main drawing area: WebGL renders the 3D game here. -->
+  <canvas id="scene">
+  </canvas>
+  <!-- Game title, instructions, and camera controls. -->
+  <div id="hud">
+   <strong>
+    ANGEL'S CHESS WAR
+   </strong>
+   <small>
+    Two angels · one castle battlefield above the chessboard · custom WebGL2
+   </small>
+   <p aria-live="polite" id="story">
+   </p>
+   <div>
+    Drag to orbit · Scroll to zoom · R to reset
+   </div>
+   <div class="controls">
+    <button id="intro">
+     Play intro
+    </button>
+    <button id="reset">
+     Reset camera
+    </button>
+    <button id="motion">
+     Pause motion
+    </button>
+   </div>
+   <small>
+    Play directly on the central 3D board. Captured pieces shatter and debris remains until reset.
+   </small>
+  </div>
+  <!-- Chess controls and current turn information. -->
+  <aside id="gameTools">
+   <b>
+    CHESS CONTROLS
+   </b>
+   <span id="turnInfo">
+    White to move
+   </span>
+   <div class="chessButtons">
+    <button id="undoMove">
+     Undo move
+    </button>
+    <button id="newGame">
+     New game
+    </button>
+   </div>
+   <div hidden="" id="promotion">
+   </div>
+   <div id="moveHistory">
+   </div>
+   <small>
+    Click a piece on the 3D board, then click a destination. Legal destinations glow gold.
+   </small>
+  </aside>
+  <div id="status">
+  </div>
+  <!-- EXTERNAL CHARACTER LIBRARY: Three.js, MIT licensed.
+     Used for advanced imported scenery, character meshes, rigging and animation.
+     The chessboard, environment, gameplay and shaders remain custom WebGL2.
+     Sources: https://threejs.org/ and https://github.com/mrdoob/three.js -->
+  <script type="importmap">
+   {
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/"
+  }
+}
+  </script>
+  <!-- PROJECT GAME LOGIC: inspect and explain in the project report. -->
+  <script src="chess.js">
+  </script>
+  <!-- PROJECT SCENE CODE: custom WebGL2 environment and animations. -->
+  <script src="main.js">
+  </script>
+  <!-- Original integration authored for this game; external assets credited in SOURCES_AND_ATTRIBUTION.md. -->
+  <script src="luxury-board.js" type="module">
+  </script>
+  <!-- Chess pieces are rendered directly by main.js; legacy GLB piece layer is not loaded. -->
+  <script src="celestial-characters.js" type="module">
+  </script>
+  <script>
+   // Attribution: diagnostic code added for this project; no external code copied.
+// An import failure previously left the old block models visible without warning.
+window.addEventListener('error', function(event) {
+    const message = String(event.message || 'Unknown script error');
+    if (!message.includes('module') && !message.includes('import') && !message.includes('three')) return;
+    const notice = document.getElementById('characterLoadingStatus') || document.createElement('div');
+    notice.id = 'characterLoadingStatus';
+    notice.style.cssText = 'position:fixed;bottom:20px;left:20px;z-index:9999;background:#2b1020;color:white;padding:14px;font:14px system-ui';
+    notice.textContent = '3D character module failed to load: ' + message;
+    document.body.appendChild(notice);
+});
+  </script>
+ </body>
+</html>

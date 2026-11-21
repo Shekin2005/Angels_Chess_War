@@ -1,0 +1,39 @@
+/*
+ * ANGEL'S CHESS WAR
+ * Student: Shekin David Raj
+ * File: style.css
+ * Purpose: Game layout, HUD, buttons, promotion interface, and responsive styling.
+ * Existing functionality is preserved; imported assets belong to their credited creators.
+ */
+
+/* Existing layout and colors are preserved; these rules style the 3D game interface. */
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#17121a;color:#fff;font-family:Georgia,serif}#scene{display:block;width:100%;height:100%;touch-action:none}#hud{position:absolute;top:14px;left:14px;width:min(430px,calc(100vw - 28px));background:#161019d9;border:1px solid #b98745;border-radius:12px;padding:15px;box-shadow:0 12px 38px #0008}strong{display:block;font-size:25px;color:#f7ca7e;letter-spacing:2px}small{display:block;font:12px/1.6 system-ui,sans-serif;color:#d5c4ae}#story{font:600 14px/1.5 system-ui,sans-serif;color:#fff2d4}.controls{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}button{background:#3e2a29;border:1px solid #a97848;border-radius:6px;color:#ffe4b3;padding:7px 9px;cursor:pointer;font:12px system-ui,sans-serif}button:hover{background:#70452e}#status{position:absolute;right:12px;bottom:12px;background:#151019bb;padding:7px;font:11px system-ui,sans-serif;color:#ddd}@media(max-width:650px){#hud{max-height:55vh;overflow:auto}strong{font-size:20px}}
+#chessPanel{position:absolute;right:12px;top:12px;width:min(330px,42vw);background:#151019e8;border:1px solid #b98745;border-radius:12px;padding:12px;color:#f5ddad;font:13px system-ui,sans-serif;max-height:90vh;overflow:auto}.chessHeader{display:flex;justify-content:space-between;gap:8px;margin-bottom:8px}.chessHeader b{letter-spacing:2px}#chessGrid{display:grid;grid-template-columns:repeat(8,1fr);aspect-ratio:1;overflow:hidden;border:2px solid #c3914e}#chessGrid button{border:0;border-radius:0;padding:0;display:grid;place-items:center;font-size:clamp(17px,2.8vw,32px);line-height:1;color:#171717;text-shadow:0 1px 1px #fff7;background:#f2dfb7}#chessGrid button.dark{background:#936d54}#chessGrid button.selected{box-shadow:inset 0 0 0 4px #ffd64e}#chessGrid button.target{box-shadow:inset 0 0 0 4px #5de7a1}#chessGrid button.blackpiece{color:#16131b;text-shadow:0 1px 2px #fffa}#chessGrid button.whitepiece{color:#fff8e7;text-shadow:0 1px 2px #242022,0 0 3px #17111b}#moveHistory{font-size:11px;line-height:1.6;max-height:75px;overflow:auto;color:#e1d3bd}.chessButtons{display:flex;gap:5px;flex-wrap:wrap;margin:8px 0}#promotion:not([hidden]){display:flex;gap:4px;margin-top:8px}#status{bottom:5px;left:12px;right:auto}@media(max-width:850px){#hud{width:min(360px,53vw)}#chessPanel{width:min(320px,44vw)}}@media(max-width:570px){#hud{top:4px;left:4px;width:calc(100% - 8px);max-height:29vh;padding:8px}#chessPanel{top:auto;bottom:25px;right:4px;width:min(310px,90vw);max-height:58vh}#status{display:none}}
+
+#gameTools{position:absolute;right:12px;top:12px;width:min(255px,33vw);background:#151019dc;border:1px solid #b98745;border-radius:12px;padding:12px;color:#f5ddad;font:13px system-ui,sans-serif}#gameTools b{display:block;letter-spacing:1px;margin-bottom:8px}#turnInfo{display:block;margin-bottom:8px}#gameTools #moveHistory{max-height:100px;overflow:auto}#gameTools #promotion:not([hidden]){display:flex;flex-wrap:wrap;gap:5px}#gameTools .chessButtons{display:flex;gap:5px;flex-wrap:wrap;margin:8px 0}@media(max-width:650px){#gameTools{top:auto;bottom:20px;right:5px;width:min(250px,55vw);padding:7px}}
+/* Keep the chess HUD above the optional transparent character canvas. */
+#hud, #gameTools, #status { z-index: 3; }
+
+/* Imported board is behind the transparent original WebGL gameplay layer. */
+#luxuryBoardLayer{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+#scene{position:relative;z-index:1}
+#celestialCharacterLayer{z-index:2!important}
+#hud,#gameTools,#status,#chessPanel{z-index:5}
+
+#luxuryPiecesLayer{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
+
+/* Space background: no mauve/pink CSS fallback. */
+html, body { background: #000 !important; }
+#scene { background: transparent !important; }
+#luxuryBoardLayer { background: #000 !important; }
+
+/* Full-width, accessible pawn promotion chooser. */
+#promotion[hidden]{display:none!important}
+#gameTools #promotion:not([hidden]){position:fixed;z-index:1000;left:50%;bottom:22px;top:auto;right:auto;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:12px;width:min(600px,calc(100vw - 24px));padding:18px;background:#100e19f5;border:2px solid #d7ae65;border-radius:16px;box-shadow:0 0 0 100vmax #0008,0 15px 40px #000c;color:#fff5dd}
+.promotion-heading{font:700 clamp(13px,2vw,19px) system-ui,sans-serif;text-align:center;letter-spacing:.03em}
+.promotion-options{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;width:100%}
+#promotion .promotion-choice{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:100px;padding:9px 3px;background:#2a2433;color:#fff3db;border:1px solid #bd975a;font:600 14px system-ui,sans-serif}
+#promotion .promotion-choice:hover,#promotion .promotion-choice:focus-visible{background:#51405c;outline:2px solid #ffe08a;outline-offset:2px}
+.promotion-symbol{font:54px/1 'Segoe UI Symbol','DejaVu Sans',serif;color:#ffe3a7}
+#promotion .promotion-cancel{background:#37272b;padding:8px 20px}
+@media(max-width:480px){#gameTools #promotion:not([hidden]){bottom:8px;padding:10px}.promotion-options{gap:4px}#promotion .promotion-choice{min-height:80px;font-size:11px}.promotion-symbol{font-size:40px}}
