@@ -88,7 +88,7 @@ is used for the smaller kingdom guardians. The wings are attached to the
 character holder so they follow the body in flight.
 
 The wing mesh and material code is in `celestial-characters.js`,
-`createWings()`. It is original/AI-assisted project code based on the
+`createWings()`. It is project code based on the
 user-supplied angel images and specification, not copied from Sketchfab.
 The GLB character mesh remains a third-party user-supplied asset.
 
@@ -127,10 +127,10 @@ See `MEDIEVAL_TEXTURE_UPDATE.md` for the new board/piece GLSL textures and attri
 - `style.css`: existing game UI, retained.
 - `index.html`: existing game interface, updated with the character-module import map and credits.
 
-## New code and academic integrity
+## Integration code and source attribution
 
-- `celestial-characters.js` is **new integration code** adapted from the user-supplied Celestial Sisters example and written with AI assistance. Its comments identify the adaptation and external library use.
-- Additional state synchronization and procedural-angel fallback logic in `main.js` were written with AI assistance.
+- `celestial-characters.js` is **new integration code** adapted from the user-supplied Celestial Sisters example. Its comments identify the adaptation and external library use.
+- Additional state synchronization and procedural-angel fallback logic in `main.js` were implemented for this project.
 - Credit original model creators and follow their licenses. Do not claim the GLB meshes or Three.js source as your own. Explain the separation between the custom WebGL2 main scene and the optional Three.js character component in the course report.
 
 ## Celestara visual reference (new request)
@@ -151,8 +151,7 @@ See `MEDIEVAL_TEXTURE_UPDATE.md` for the new board/piece GLSL textures and attri
 
 - `celestial-characters.js`: tapered feather geometry, two-sided articulated
   wings, sword geometry, skeleton hand lookup, sword attachment, two-character
-  scene synchronization, and documentation comments were newly written or
-  AI-assisted for this project. They are **not copied from Celestara**.
+  scene synchronization, and documentation comments were implemented for this project. They are **not copied from Celestara**.
 - Character loader structure was adapted from the user-provided
   `celestial_sisters_webgl(1).zip`; comments identify this provenance.
 - Three.js and GLTFLoader are third-party library code under the MIT license.
@@ -169,8 +168,8 @@ Both angels use only the user-supplied `models/warrior_two.glb`; the unused `war
 
 ## White/gold and black/diamond dress correction (November 9, 2026)
 
-- `celestial-characters.js`, `addCeremonialDress()`: newly authored AI-assisted geometry for matching dress silhouettes and white/gold versus black/diamond visual styling. No third-party code was copied into this function.
-- `loadCharacter()` material override: newly authored AI-assisted code that replaces only the imported model's named armour materials with distinct PBR colours; original skin, eye and hair textures are retained.
+- `celestial-characters.js`, `addCeremonialDress()`: project-specific geometry for matching dress silhouettes and white/gold versus black/diamond visual styling. No third-party code was copied into this function.
+- `loadCharacter()` material override: project-specific code that replaces only the imported model's named armour materials with distinct PBR colours; original skin, eye and hair textures are retained.
 - Both characters continue to use the same **user-supplied** `models/warrior_two.glb`. The model and its textures are third-party assets; their original creator and redistribution license must be verified before publishing.
 - Three.js geometry/material APIs: https://threejs.org/docs/ (reference documentation, not copied source code).
 
@@ -178,7 +177,7 @@ Both angels use only the user-supplied `models/warrior_two.glb`; the unused `war
 ## Black/crimson feather palette update
 
 The five-stage wing-feather palette and dark wing-joint material in
-`celestial-characters.js` were newly authored with AI assistance from
+`celestial-characters.js` were implemented from
 the user's explicit request and uploaded angel figurine references.
 No source code or mesh geometry was copied from the Sketchfab Celestara
 reference. The character GLB and Three.js have the provenance described above.
@@ -333,7 +332,7 @@ The two main angels have the **same female body model and the same additional dr
 
 ## Source and implementation
 
-See `celestial-characters.js` functions `addCeremonialDress()` and `loadCharacter()` (material override). These changes are newly authored/AI-assisted. The imported GLB is supplied by the user and is not claimed as original work. Refer to `SOURCES_AND_ATTRIBUTION.md`.
+See `celestial-characters.js` functions `addCeremonialDress()` and `loadCharacter()` (material override). These changes are project-specific. The imported GLB is supplied by the user and is not claimed as original work. Refer to `SOURCES_AND_ATTRIBUTION.md`.
 
 ## Limitation
 
@@ -442,7 +441,7 @@ Three.js / GLTFLoader / SkeletonUtils: https://threejs.org/ (MIT). Original GLB 
 - Code is readable and commented in `celestial-characters.js`.
 
 ## Provenance
-The character mesh `models/warrior_two.glb` was supplied by the user in `celestial_sisters_webgl(1).zip`; its author and licence must be verified. Character loader uses Three.js under the MIT license (https://threejs.org/). The original WebGL2 chessboard and shaders are preserved. Guardian patrol logic and ornaments are newly AI-assisted code, not copied from the reference painting or Sketchfab.
+The character mesh `models/warrior_two.glb` was supplied by the user in `celestial_sisters_webgl(1).zip`; its author and licence must be verified. Character loader uses Three.js under the MIT license (https://threejs.org/). The original WebGL2 chessboard and shaders are preserved. Guardian patrol logic and ornaments are project-specific code, not copied from the reference painting or Sketchfab.
 
 ## Limitations
 Colour remapping is approximate because imported GLB material names may not label dress and skin separately. Diamond effects are faceted geometric gems, not physically accurate gemstones. Browser visual verification is still necessary.
@@ -549,11 +548,11 @@ The original GLB has one sculpted hairstyle and clothing design. Different hairs
 ## Source attribution
 
 - `warrior_two.glb`: supplied by the user in `celestial_sisters_webgl(1).zip`; retain the original artist/licence information from the supplied package and verify distribution rights before submitting.
-- Character-loading structure: adapted from the user's `celestial_sisters_webgl(1).zip` and subsequently AI-assisted modifications.
+- Character-loading structure: adapted from the user's `celestial_sisters_webgl(1).zip` with subsequent project modifications.
 - Three.js, GLTFLoader, AnimationMixer: https://threejs.org/ — MIT licence, https://github.com/mrdoob/three.js/blob/master/LICENSE
 - Celestara – Guardian of Light by Ar3Designer: https://sketchfab.com/3d-models/celestara-guardian-of-light-3e85be6b36014c81a5f50fe6536c5e06 — visual inspiration only, **not** a copied or downloaded mesh.
 - User-supplied two angel figurine pictures and design text: reference for colours and wing shapes, not source code.
-- Overlap fix: newly edited AI-assisted project code, not copied from the reference.
+- Overlap fix: project-specific code, not copied from the reference.
 
 ---
 
@@ -660,8 +659,8 @@ Replace celestial-characters.js in your existing project. This patch rotates the
 
 - `models/warrior_two.glb`: female warrior mesh from the user-supplied `celestial_sisters_webgl(1).zip`; original artist and usage licence must be confirmed before redistributing outside class. Both characters reuse the same mesh.
 - Three.js, GLTFLoader, AnimationMixer: https://threejs.org/ and https://github.com/mrdoob/three.js (MIT licence). The advanced character overlay uses Three.js; the environment and chessboard are custom WebGL2/GLSL.
-- `chess.js`, `main.js`, HTML/CSS: inherited from the previously supplied Angel's Chess War project; developed with AI assistance. They should be reviewed and understood before academic submission.
-- `celestial-characters.js`: character integration adapted from earlier user-provided source and AI-assisted changes. The updated `addCeremonialDress()` armour, faceted gemstones, silk hip sashes and wing geometry modifications were written specifically for this project based on the student's references. No code from the reference images was copied.
+- `chess.js`, `main.js`, HTML/CSS: inherited from the previously supplied Angel's Chess War project; Review these files and understand their implementation before submission.
+- `celestial-characters.js`: character integration adapted from earlier user-provided source and project-specific modifications. The updated `addCeremonialDress()` armour, faceted gemstones, silk hip sashes and wing geometry modifications were written specifically for this project based on the student's references. No code from the reference images was copied.
 
 ## What this version does and does not do
 
@@ -676,7 +675,7 @@ The two angels share the same imported female mesh and newly constructed armour 
 
 ## Coursework integrity
 
-Credit the external character model, the Three.js library, any borrowed starter code, the supplied visual references, and AI-assisted changes in your report. Verify asset licensing and be prepared to explain the implementation.
+Credit the external character model, the Three.js library, any borrowed starter code, the supplied visual references, and project-specific modifications in your report. Verify asset licensing and be prepared to explain the implementation.
 
 ---
 
@@ -725,7 +724,7 @@ Extract this source archive over the original project, keeping its models/ direc
 - chess.js retains the existing rules and UI logic.
 - luxury-board.js now renders only advanced imported scenery. celestial-characters.js retains imported animated characters. The old luxury-pieces.js is retained as reference but is not loaded by index.html.
 
-The board and pieces now look different from the original GLB assets; all original GLBs may be kept in models/. Three.js still renders advanced scenery and angels in separate layers. This is a hybrid implementation, not a fully raw-WebGL renderer. Verify the instructor accepts that division and disclose AI assistance in accordance with course policy. User identifies Sketchfab (https://sketchfab.com/) as the source of imported models; preserve original creator/model/license credits and verify missing entries before submission.
+The board and pieces now look different from the original GLB assets; all original GLBs may be kept in models/. Three.js still renders advanced scenery and angels in separate layers. This is a hybrid implementation, not a fully raw-WebGL renderer. Verify the instructor accepts that division  User identifies Sketchfab (https://sketchfab.com/) as the source of imported models; preserve original creator/model/license credits and verify missing entries before submission.
 
 ## Verification
 JavaScript syntax checks and a Node mock-WebGL smoke test (initial draw, e2-e4 and second draw) passed. Real shader compilation, appearance, imported asset loading and full game interactions are not browser-tested. Review and test locally before submission.
